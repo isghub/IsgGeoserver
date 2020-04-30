@@ -12,7 +12,7 @@ ARG GS_URL=https://downloads.sourceforge.net/project/geoserver/GeoServer/${GS_VE
 # for correct cpu/memory detection inside a container
 ENV JAVA_OPTS="-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
 ENV GEOSERVER_HOME=/opt/geoserver
-ENV GEOSERVER_DATA_DIR=/data/geoserver/data_dir
+ENV GEOSERVER_DATA_DIR=/opt/geoserver/data_dir
 
 WORKDIR /tmp
 
@@ -41,7 +41,6 @@ RUN groupadd --gid 999 geoserver \
         unzip \
     && rm -rf /var/lib/apt/lists/*
 
-ADD user.xml "$GEOSERVER_HOME"/src/community/cite/users/geoserver/user.xml 
 VOLUME /data/geoserver/data_dir
 
 USER geoserver
