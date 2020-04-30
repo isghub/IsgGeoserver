@@ -40,6 +40,7 @@ RUN groupadd --gid 999 geoserver \
         wget \
         unzip \
     && rm -rf /var/lib/apt/lists/*
+
 ADD user.xml "$GEOSERVER_HOME"/src/community/cite/users/geoserver/user.xml 
 VOLUME /data/geoserver/data_dir
 
